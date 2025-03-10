@@ -97,19 +97,3 @@ y_test_unscaled = scaler_pred.inverse_transform(y_test)
 # Summarize average performance
 summarize_average_performance('DK-TCIT', y_test_unscaled, y_pred_unscaled)
 
-
-
-##### Load the model
-
-from keras.models import model_from_json
-
-
-with open('model.json','r') as f:
-    json = f.read()
-#model = model_from_json(json)
-
-model.load_weights("TD_CNN_Informer_tcn_Tunxi_1981_2016_rmse84.40.h5")
-
-
-# summarize model.
-model.summary()

@@ -1,4 +1,3 @@
-
 import tensorflow as tf
 
 def huber_loss(delta=1.0):
@@ -25,11 +24,10 @@ def custom_flood_loss(y_true, y_pred):
     # Custom loss function for flood forecasting
 
     # Define domain-specific parameters
-    #peck_point_5 = 0.0831724  # NO. 330-> 540
-    peck_point_4 = 0.0555906  # NO. 329-> 361
-    peck_point_3 = 0.0454785  # NO. 328-> 295
-    peck_point_2 = 0.0353664  # NO. 327-> 229
-    peck_point_1 = 0.0252544  # NO. 326-> 164
+    peck_point_4 = 0.0555906  
+    peck_point_3 = 0.0454785 
+    peck_point_2 = 0.0353664  
+    peck_point_1 = 0.0252544  
     flood_threshold = 0.0153683  # Threshold above which flow rates are considered flood events
 
     # Weight parameters for penalizing errors
@@ -37,8 +35,7 @@ def custom_flood_loss(y_true, y_pred):
     alpha1 = 0.6
     alpha2 = 0.7
     alpha3 = 0.8
-    alpha4 = 0.9
-    #alpha5 = 1.0    
+    alpha4 = 0.9  
     beta = 0.5   # Regularization weight
     delta = 1.0  # Delta for Huber loss
 
@@ -55,7 +52,6 @@ def custom_flood_loss(y_true, y_pred):
     non_flood_loss = tf.where(y_true <= flood_threshold, huber_loss_fn(y_true, y_pred), tf.zeros_like(y_true))
 
     # Penalize errors during flood peck events more heavily
-    #peck_point_5_loss = tf.reduce_mean(peck_point_5_loss) * alpha5
     peck_point_4_loss = tf.reduce_mean(peck_point_4_loss) * alpha4
     peck_point_3_loss = tf.reduce_mean(peck_point_3_loss) * alpha3
     peck_point_2_loss = tf.reduce_mean(peck_point_2_loss) * alpha2

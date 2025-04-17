@@ -31,11 +31,11 @@ def custom_flood_loss(y_true, y_pred):
     flood_threshold = 0.0153683  # Threshold above which flow rates are considered flood events
 
     # Weight parameters for penalizing errors
-    alpha  = 0.2  
-    alpha1 = 0.6
-    alpha2 = 0.7
-    alpha3 = 0.8
-    alpha4 = 0.9  
+    alpha  = 1.5  
+    alpha1 = 2
+    alpha2 = 3
+    alpha3 = 4
+    alpha4 = 5  
     beta = 0.5   # Regularization weight
     delta = 1.0  # Delta for Huber loss
 
